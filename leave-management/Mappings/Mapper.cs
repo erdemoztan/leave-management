@@ -1,4 +1,4 @@
-﻿using AutoMapper
+﻿using AutoMapper;
 using leave_management.Data;
 using leave_management.Models;
 using System;
