@@ -11,7 +11,6 @@ namespace leave_management.Models
     {
         public int Id { get; set; }
 
-        [Required]
         public int NumberofDays { get; set; }
 
         public DateTime DateCreated { get; set; }
@@ -27,5 +26,7 @@ namespace leave_management.Models
         public IEnumerable<SelectListItem> Employees { get; set; }
 
         public IEnumerable<SelectListItem> LeaveTypes { get; set; }
+
+        public int LeaveYear { get; set; }
     }
 }
