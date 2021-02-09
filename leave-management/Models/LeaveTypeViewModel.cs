@@ -21,4 +21,11 @@ namespace leave_management.Models
         [Display(Name = "Default Number of Days")]
         public int DefaultDays { get; set; }
     }
+
+    public class CreateLeaveTypeViewModel
+    {
+        public int NumberUpdated { get; set; }
+
+        public List<LeaveTypeViewModel> LeaveTypes { get; set; }
+    }
 }

@@ -29,4 +29,5 @@ namespace leave_management.Models
 
         public int LeaveYear { get; set; }
     }
+   
 }
