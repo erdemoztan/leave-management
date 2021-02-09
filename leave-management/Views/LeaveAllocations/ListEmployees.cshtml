@@ -5,11 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>ListEmployees</h1>
+<h1>Employee List</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table id="tblData" class="table">
     <thead>
         <tr>
@@ -39,7 +36,7 @@
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
             <td>
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info info "><i class="fa fa-info" aria-hidden="true"></i> Details</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info info "><i class="fa fa-info" aria-hidden="true"></i> Details</a>
             </td>
         </tr>
 }

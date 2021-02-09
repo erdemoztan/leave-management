@@ -49,9 +49,19 @@ namespace leave_management.Controllers
         }
 
         // GET: LeaveAllocationController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return View();
+            var employee = _mapper.Map<EmployeeViewModel>(_userManager.FindByIdAsync(id).Result);
+            var leaveAllocations = _mapper.Map<List<LeaveAllocationViewModel>>(_repo.GetLeaveAllocationsByEmployeeId(id, DateTime.Now.Year));
+
+            var model = new ViewLeaveAllocationsViewModel
+            {
+                Employee = employee,
+                EmployeeId = id,
+                LeaveAllocations = leaveAllocations
+            };
+
+            return View(model);
         }
 
         // GET: LeaveAllocationController/Create
@@ -78,20 +88,28 @@ namespace leave_management.Controllers
         // GET: LeaveAllocationController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var leaveAllocation = _mapper.Map<LeaveAllocationViewModel>(_repo.FindById(id.ToString()));
+            return View(leaveAllocation);
         }
 
         // POST: LeaveAllocationController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, LeaveAllocationViewModel model)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var leaveAllocation = _mapper.Map<LeaveAllocation>(model);
+                if (!_repo.Update(leaveAllocation))
+                {
+                    ModelState.AddModelError("", "Something went wrong....");
+                    return View(model);
+                }
+                return RedirectToAction(nameof(ListEmployees));
             }
             catch
             {
+                ModelState.AddModelError("", "Something went wrong....");
                 return View();
             }
         }

@@ -11,6 +11,9 @@ namespace leave_management.Models
     {
         public int Id { get; set; }
 
+        [Required]
+        [Range(0, 25, ErrorMessage = "Number of days must be between 0-25")]
+        [Display(Name = "Number of Days")]
         public int NumberofDays { get; set; }
 
         public DateTime DateCreated { get; set; }
@@ -23,11 +26,16 @@ namespace leave_management.Models
 
         public int LeaveTypeId { get; set; }
 
-        public IEnumerable<SelectListItem> Employees { get; set; }
-
-        public IEnumerable<SelectListItem> LeaveTypes { get; set; }
-
         public int LeaveYear { get; set; }
+    }
+
+    public class ViewLeaveAllocationsViewModel
+    {
+        public EmployeeViewModel Employee { get; set; }
+
+        public string EmployeeId { get; set; }
+
+        public List<LeaveAllocationViewModel> LeaveAllocations { get; set; }
     }
    
 }
