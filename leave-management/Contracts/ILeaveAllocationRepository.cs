@@ -12,5 +12,7 @@ namespace leave_management.Contracts
         bool CheckAllocation(int leaveTypeId, string employeeId, int year);
 
         IList<LeaveAllocation> GetLeaveAllocationsByEmployeeId(string employeeId, int year);
+
+        IList<LeaveAllocation> GetLeaveAllocationsByEmployeeIdandLeaveType(string employeeId, int leaveTypeId,  int year);
     }
 }

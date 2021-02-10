@@ -56,6 +56,11 @@ namespace leave_management.Repository
             return _db.LeaveAllocations.Include(q=> q.LeaveType).Where(q => q.EmployeeId == employeeId && q.LeaveYear == year).ToList();
         }
 
+        public IList<LeaveAllocation> GetLeaveAllocationsByEmployeeIdandLeaveType(string employeeId, int leaveTypeId, int year)
+        {
+            return _db.LeaveAllocations.Include(q => q.LeaveType).Where(q => q.EmployeeId == employeeId && q.LeaveTypeId == leaveTypeId && q.LeaveYear == year).ToList();
+        }
+
         public bool isExists(int id)
         {
             

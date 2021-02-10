@@ -10,6 +10,7 @@
     <title>@ViewData["Title"] - Core Leave Management</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
@@ -32,7 +33,10 @@
                         @if (SignInManager.IsSignedIn(User))
                         {
                             <li class="nav-item">
-                                <a class="nav-link text-white" asp-area="" asp-controller="" asp-action="">Apply For Leave</a>
+                                <a class="nav-link text-white" asp-area="" asp-controller="LeaveRequests" asp-action="Create">Apply For Leave</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white" asp-area="" asp-controller="LeaveRequests" asp-action="MyLeave">MyLeave</a>
                             </li>
                             if (User.IsInRole("Admin"))
                             {
@@ -41,7 +45,7 @@
                                     <ul class="dropdown-menu bg-white">
                                         <li><a class="dropdown-item text-dark" asp-controller="LeaveTypes" asp-action="Index">Leave Types</a></li>
                                         <li><a class="dropdown-item text-dark" asp-controller="LeaveAllocations" asp-action="Index">Leave Allocations</a></li>
-                                        <li><a class="dropdown-item text-dark" href="#">Leave Applications</a></li>
+                                        <li><a class="dropdown-item text-dark" asp-controller="LeaveRequests" asp-action="Index">Leave Applications</a></li>
                                         <li><a class="dropdown-item text-dark" asp-controller="LeaveAllocations" asp-action="ListEmployees">Employees</a></li>
                                     </ul>
                                 </li>
@@ -67,6 +71,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
