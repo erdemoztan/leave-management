@@ -22,10 +22,12 @@ namespace leave_management.Models
 
         public string EmployeeId { get; set; }
 
+        [Display(Name = "Leave Type")]
         public LeaveTypeViewModel LeaveType { get; set; }
 
         public int LeaveTypeId { get; set; }
 
+        [Display(Name = "Valid Year")]
         public int LeaveYear { get; set; }
     }
 
