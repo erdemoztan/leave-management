@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Details For - @Model.Employee.Lastname , @Model.Employee.Firstname </h1>
@@ -70,7 +70,7 @@
                 <h6>
                     @item.LeaveType.Name <span class="badge badge-secondary">@item.NumberofDays</span> |
                     <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">
-                        <i class="fa fa-pencil"></i> 
+                        <i class="fas fa-pencil-alt"></i> 
                     </a>
                 </h6>
             </li>
