@@ -14,6 +14,7 @@ namespace leave_management.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
+            //pull test
             builder.ConfigureServices((context, services) => {
             });
         }
